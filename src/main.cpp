@@ -17,6 +17,7 @@ class Fraction
         Fraction& operator+(const Fraction&);
         Fraction& operator-(const Fraction&);
         friend ostream& operator<<(ostream& os, const Fraction& fraction);
+        bool operator==(const Fraction& a);
 
     private:
         int m_num;
@@ -39,6 +40,11 @@ Fraction& Fraction::operator-(const Fraction& fraction)
     return result;
 }
 
+bool Fraction::operator==(const Fraction& a)
+{
+    return(a.m_num == this->m_num && a.m_denom == this->m_denom);
+}
+
 ostream& operator<<(ostream& os, const Fraction& fraction)
 {
     os << "Fraction: " << fraction.m_num << "/" << fraction.m_denom << endl;
@@ -56,6 +62,15 @@ void operator_overloading_test()
 
     Fraction d;
     cout << d;
+
+    Fraction e = Fraction(3,4);
+
+    bool ret;
+    ret = e==a;
+    cout << ret << endl;
+
+    ret = e==b;
+    cout << ret << endl;
 }
 
 //Example of virtual functions and member function overloading.
